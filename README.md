@@ -81,3 +81,8 @@ Found command to change timezone
 timedatectl set-timezone Europe/[Your Capital city]
 
 date    -To confirm
+
+
+
+
+And smile :)
