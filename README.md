@@ -98,5 +98,80 @@ fridk /dev/sda
 Tool started
 press m, than hit enter/return     - Help
 
+Making boot drive
+n
+enter or p
+enter or 1
+enter start from first bits
++1G
+t - changing type of partition
+1-st partition that we just make
+l to see codes
+ef EFI (FAT-12/16/  - NOTE: may be you will not see but there is 32 also. At the end it will look like EFI (FAT-12/16/32)
+
+a
+select boot drive that we just make
+
+Making swap drive
+n
+enter or p
+enter or 2
+enter
++4G
+t - changing type of partiton
+2-nd partition that we just make
+l to see codes
+82 Linux swap / Solaris
+
+Making root partition
+n
+enter or p
+enter or 3
+enter
+enter - get rest of the space
+
+
+p - to see is everything cool
+
+if everything is cool press w to write changes
+
+you can check with lsblk and fdisk -l to be complettely shure
+
+
+Creatinf file systems
+boot drive:
+mkfs.fat -F32 /dev/sda1
+
+swap partition:
+
+
+root partition:
+mkfs.ext4 /dev/sda3
+
+---
+
+Ok. This was easy part. Now start confusing one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
