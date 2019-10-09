@@ -84,5 +84,19 @@ date    -To confirm
 
 
 
+Lets see what we have
+lsblk
 
-And smile :)
+fdisk -l
+
+
+To start creating partitions we will use frisk tool. They are many toolsa llredy preunstalled
+Note: If you are thinking to do this on your main machine not in virtual one read more about what /dev/sda, /dev/sdb, /dev/sdc .., .. means
+
+fridk /dev/sda
+
+Tool started
+press m, than hit enter/return     - Help
+
+
+
