@@ -187,6 +187,7 @@ In command mode go to line to your closest region server
 `yy` - copy line  
 Go to the top of your document again and paste wit  
 `p`
+`:wq` - this will write changes to file and it will close the document
 
 ###### Installing the system:  
 `pacstrap /mnt base base-devel`
