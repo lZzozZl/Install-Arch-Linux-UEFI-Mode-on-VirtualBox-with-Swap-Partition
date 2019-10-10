@@ -156,7 +156,9 @@ boot drive:
 * mkfs.fat -F32 /dev/sda1
 
 
-swap partition:
+swap partition:  
+* mkswap /dev/sdX2  
+* swapon /dev/sdX2  
 
 
 root partition:  
@@ -166,9 +168,30 @@ root partition:
 
 Ok. This was easy part. Now start confusing one.
 
+Mounting file system to /root partition  
+* mount /dev/sda3 /mnt
+* mkdir /mnt/boot - creating boot directory inside mount point
+* mount /dev/sda1 /mnt/boot- Mounting UEFI partition to /mtn/boot
 
+Lets check if mouning points are ok  
+`df` or `lsblk` or `findmnt` or `mount`  - Choose one or two commands to check :)
 
+---
 
+###### Mirrorlist:  
+__*NOTE: Read how to work with vi or vim editor.*__   
+`vi /etc/pacman.d/mirrorlist`  
+
+In command mode go to line to your closest region server  
+`/Country` - search ( most likley first letter should be capital or it will say that it did not find it )  
+`yy` - copy line  
+Go to the top of your document again and paste wit  
+`p`
+
+###### Installing the system:  
+`pacstrap /mnt base base-devel`
+
+wait...  
 
 
 
