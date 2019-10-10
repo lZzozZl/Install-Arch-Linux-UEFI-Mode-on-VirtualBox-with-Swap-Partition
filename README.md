@@ -237,6 +237,18 @@ creating login user
 `exit`
 `shutdown -r 0` or `reboot`
 
+there is a chance your bootable iso to start again. If this happen:  
+* Select VM from VBox Manager
+* Settings
+* Storage
+* On controller IDE you will se the name of your .iso image.
+* Click right button on that .iso file
+* Remove attachment
+* Remove
+* OK
+* Remove controller ??
+
+Start the machine
 
 
 
