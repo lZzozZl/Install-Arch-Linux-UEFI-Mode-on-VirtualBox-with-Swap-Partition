@@ -186,7 +186,7 @@ In command mode go to line to your closest region server
 `/Country` - search ( most likley first letter should be capital or it will say that it did not find it )  
 `yy` - copy line  
 Go to the top of your document again and paste wit  
-`p`
+`p`  
 `:wq` - this will write changes to file and it will close the document
 
 ###### Installing the system:  
