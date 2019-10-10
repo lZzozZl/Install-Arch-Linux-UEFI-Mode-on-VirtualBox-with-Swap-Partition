@@ -195,6 +195,51 @@ Go to the top of your document again and paste wit
 wait...  
 
 
+###### Setting up linux enviroment  
+`genfstab -U /mnt >> /mnt/etc/fstab` - generating file with mounting points  
+
+*Check:
+`genfstab -U /mnt`  
+
+* Chroot  
+`arch-chroot /mnt`  
+
+* Setting local time  
+`ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`  
+
+`hwclock --systohc`  
+
+* Localization
+`vi /etc/locale.gen` - Uncoment en_US.UTF-8 UTF-8  
+`locale-gen`  
+`echo "LANG=en_US.UTF-8" > /etc/locale.conf`  
+
+* Network configuration  
+`vim /etc/hostname` - Creating hostname ( Name of your computer )
+It will be empty file. Write some name and than `:wq`  
+
+Create password for root account  
+`passwd`  
+write some password  
+retype password  
+
+creating login user  
+`useradd -g users -G wheel,storage,power -m username`  
+
+###### Boot loader
+`pacman -S grub efibootmgr`  
+`grub-install --target=x86_64-efi --efi-directory=/boot --removable --bootloader-id=GRUB` 
+`pacman -S os-prober` - if you have multiple OS's on the pc this is good to have
+`grub-mkconfig -o /boot/grub/grub.cfg`
+
+---
+
+`exit`
+`shutdown -r 0` or `reboot`
+
+
+
+
 
 
 
