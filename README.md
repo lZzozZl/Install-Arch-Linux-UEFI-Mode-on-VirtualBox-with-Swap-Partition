@@ -99,7 +99,7 @@ press m, than hit enter/return     - Help
 
 
 
-### Making boot drive
+###### Making boot drive:
 * n
 * enter or p
 * enter or 1
@@ -115,7 +115,7 @@ press m, than hit enter/return     - Help
 
 
 
-### Making swap drive
+###### Making swap drive:
 * n
 * enter or p
 * enter or 2
@@ -132,7 +132,7 @@ press m, than hit enter/return     - Help
 
 
 
-### Making root partition
+###### Making root partition:
 * n
 * enter or p
 * enter or 3
