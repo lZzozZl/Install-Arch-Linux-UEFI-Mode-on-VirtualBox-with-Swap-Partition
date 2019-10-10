@@ -228,9 +228,9 @@ creating login user
 
 ###### Boot loader
 `pacman -S grub efibootmgr`  
-`grub-install --target=x86_64-efi --efi-directory=/boot --removable --bootloader-id=GRUB` 
-`pacman -S os-prober` - if you have multiple OS's on the pc this is good to have
-`grub-mkconfig -o /boot/grub/grub.cfg`
+`grub-install --target=x86_64-efi --efi-directory=/boot --removable --bootloader-id=GRUB`  
+`pacman -S os-prober` - if you have multiple OS's on the pc this is good to have  
+`grub-mkconfig -o /boot/grub/grub.cfg`  
 
 ---
 
