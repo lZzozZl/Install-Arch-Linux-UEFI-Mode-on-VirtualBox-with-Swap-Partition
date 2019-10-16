@@ -58,41 +58,42 @@ Choose Arch Linux archiso x86_64 UEFI USB
 
 Wait
 
-Check are you installing on UEFI mode
-ls /sys/firmware/efi/efivars
-If you do not see any output or your folder is empty, something is wron.
+Check are you installing on UEFI mode  
+`ls /sys/firmware/efi/efivars`  
+If you do not see any output or your folder is empty, something is wrong.
 
-Check if you have internet
-ping archlinux.org
+Check if you have internet  
+`ping archlinux.org`  
 
 Check time and date
-```
-date
-timedatectl status
-```
+`date`  
+`timedatectl status`  
 
-If tame and date are right continue
-If they are not:
-timedatectl show
+If tame and date are right continue  
+If they are not:  
+`timedatectl show`  
 
 ( mine problem was timezone )
-I opened https://jlk.fjfi.cvut.cz/arch/manpages/man/timedatectl.1
-Found command to change timezone
-timedatectl set-timezone Europe/[Your Capital city]
+I opened https://jlk.fjfi.cvut.cz/arch/manpages/man/timedatectl.1  
+Found command to change timezone  
+`timedatectl set-timezone Europe/[Your Capital city]`
 
-date    -To confirm
+`date` -To see did you change the reagion
+
+###### Update the system clock
+`timedatectl set-ntp true`
 
 
 
 Lets see what we have
-lsblk
-fdisk -l
+`lsblk`  
+`fdisk -l`  
 
 
 To start creating partitions we will use frisk tool. They are many toolsa llredy preunstalled
 Note: If you are thinking to do this on your main machine not in virtual one read more about what /dev/sda, /dev/sdb, /dev/sdc .., .. means
 
-fridk /dev/sda
+`fridk /dev/sda`  
 
 Tool started
 press m, than hit enter/return     - Help
