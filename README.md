@@ -229,6 +229,16 @@ It will be empty file. Write some name and than `:wq`
 `pacman -S networkmanager`  
 `systemctl enable NetworkManager`  
 
+*<details><summary>or dhcpcd enable</summary>
+<p>  
+  
+`systemctl enable dhcpcd@eth0.service` 
+`systemctl start dhcpcd@eth0.service`  
+The `eth0` is the network interface. If you are using different get tha name of it and change it.  
+
+</p>
+</details>
+
 (intramfs ?)
 
 Create password for root account  
