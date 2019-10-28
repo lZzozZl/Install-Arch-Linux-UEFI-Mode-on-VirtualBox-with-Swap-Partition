@@ -53,7 +53,7 @@ Choose virtual optical disc file
 Choose your downloaded iso
 Start
 
-
+---  
 Choose Arch Linux archiso x86_64 UEFI USB
 
 Wait
@@ -70,19 +70,17 @@ Check time and date
 `timedatectl status`  
 
 If tame and date are right continue  
+`timedatectl set-ntp true`  
+
 If they are not:  
 `timedatectl show`  
 
-( mine problem was timezone )
+( mine are not. I found that timezone is different )
 I opened https://jlk.fjfi.cvut.cz/arch/manpages/man/timedatectl.1  
 Found command to change timezone  
 `timedatectl set-timezone Europe/[Your Capital city]`
 
 `date` -To see did you change the reagion
-
-###### Update the system clock
-`timedatectl set-ntp true`
-
 
 
 Lets see what we have
@@ -143,16 +141,16 @@ press m, than hit enter/return     - Help
 
 
 
-p - to see is everything cool  
-if everything is cool press w to write changes  
-you can check with lsblk and fdisk -l to be complettely shure  
+`p` - to see is everything cool  
+if everything is cool press `w` to write changes  
+you can check with `lsblk` and `fdisk -l` to be complettely shure  
 
 
 
 
 
 
-Creatinf file systems  
+###### Creatinf file systems/Formating partitions  
 boot drive:
 * mkfs.fat -F32 /dev/sda1
 
@@ -191,7 +189,7 @@ Go to the top of your document again and paste wit
 `:wq` - this will write changes to file and it will close the document
 
 ###### Installing the system:  
-`pacstrap /mnt base base-devel`
+`pacstrap /mnt base base-devel linux linux-firmware vim`
 
 wait...  
 
@@ -201,6 +199,7 @@ wait...
 
 *Check:
 `genfstab -U /mnt`  
+`cat /mnt/etc/fstab`  
 
 * Chroot  
 `arch-chroot /mnt`  
@@ -219,6 +218,19 @@ wait...
 `vim /etc/hostname` - Creating hostname ( Name of your computer )
 It will be empty file. Write some name and than `:wq`  
 
+
+* Setuping host file  
+`vim /etc/hosts`  
+`127.0.0.1	localhost  
+::1		    localhost  
+127.0.0.1	Archlinux.localdomain	Archlinux `  
+
+* Network Manager  
+`pacman -S networkmanager`  
+`systemctl enable NetworkManager`  
+
+(intramfs ?)
+
 Create password for root account  
 `passwd`  
 write some password  
@@ -226,19 +238,34 @@ retype password
 
 creating login user  
 `useradd -g users -G wheel,storage,power -m username`  
+(for user to be root we need to edit some confs)
 
 ###### Boot loader
 `pacman -S grub efibootmgr`  
-`grub-install --target=x86_64-efi --efi-directory=/boot --removable --bootloader-id=GRUB`  
+`grub-install --target=x86_64-efi --efi-directory=/boot`  
+
 `pacman -S os-prober` - if you have multiple OS's on the pc this is good to have  
 `grub-mkconfig -o /boot/grub/grub.cfg`  
 
+###### Virtualbox fix  
+We need to do this if we install on virtual box as we are doing right now.
+`mkdir /boot/EFI/boot`  
+`cp /boot/EFI/arch/grubx64.efi /boot/EFI/boot/bootx64.efi`  
+
 ---
 
-`exit`
-`shutdown -r 0` or `reboot`
+`exit`  
+`umount -a` - if it work at all. For me it always says that drives are busy
+`reboot`  
 
-there is a chance your bootable iso to start again. If this happen:  
+login with:  
+`root`
+`your password`
+
+if you manage to boot and login you are almost done.  
+Now `shutdown -r 0`  
+
+There is a chance your bootable iso to start again. If this happen:  
 * Select VM from VBox Manager
 * Settings
 * Storage
@@ -247,9 +274,12 @@ there is a chance your bootable iso to start again. If this happen:
 * Remove attachment
 * Remove
 * OK
-* Remove controller ??
 
 Start the machine
+
+### Congrats you have installed Arch linux in UEFI mode with SWAP drive
+
+
 
 
 
