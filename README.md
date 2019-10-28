@@ -229,7 +229,7 @@ It will be empty file. Write some name and than `:wq`
 `pacman -S networkmanager`  
 `systemctl enable NetworkManager`  
 
-*<details><summary>or dhcpcd enable</summary>
+* <details><summary>or dhcpcd enable</summary>
 <p>  
   
 `systemctl enable dhcpcd@eth0.service` 
