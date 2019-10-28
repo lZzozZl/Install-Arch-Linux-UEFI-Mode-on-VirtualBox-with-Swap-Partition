@@ -1,4 +1,4 @@
-# Install Arch Linux UEFI Mode on VirtualBox with Swap Partition
+# Install Arch Linux UEFI Mode on VirtualBox with SWAP Partition
 How to install UEFI Arch Linux on VirtualBox VM
 
 
