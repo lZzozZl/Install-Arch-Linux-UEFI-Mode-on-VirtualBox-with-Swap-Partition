@@ -45,7 +45,7 @@ Before startint virtual machine press right mouse button on the VM you just crea
 
 At the left side choose System 
 
-On the ###### Motherboard tab check the Enable EFI (special OSes only)  
+On the **Motherboard** tab check the Enable EFI (special OSes only)  
 OK  
 
 Start  
