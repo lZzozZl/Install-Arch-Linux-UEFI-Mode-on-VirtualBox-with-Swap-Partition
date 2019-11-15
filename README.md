@@ -11,61 +11,62 @@ How to install UEFI Arch Linux on VirtualBox VM
 
 In this tutorial im using VBox 6.0.10 with Arch linux 2019.10.01 iso
 
-Button new
 
 ---
-Name the machine
-Choose folder where you want your vm to be
-On type choose Linux
-On verison choose Arch 32 or 64 it depends on your processor
+Button new  
+Name the machine  
+Choose folder where you want your vm to be  
+On type choose Linux  
+On verison choose Arch 32 or 64 it depends on your processor  
 Next
 
-Choose amount of ram. Personaly i add 2048MB wich is more than enough
-Next
+Choose amount of ram. *Personaly i add 2048MB*  
+Next  
 
-Whell we create a new instalatiion and we do not have other vms so we choose
-Create virtual hard disk now
-Next
+Whell we create a new instalatiion and we do not have other VMs so we choose  
+Create virtual hard disk now  
+Next  
 
-I do not know difference between the typed and i choose the default option
-VDI (VirtualBox Disk Image)
-Next
+I do not know difference between the typed and i choose the default option  
+VDI (VirtualBox Disk Image)  
+Next  
 
-Again i do not know what options do and use default one
-Dinamycally allocated
-Next
+Again i do not know what options do and use default one  
+Dinamycally allocated  
+Next  
 
-On HDD space i place 20,00GB
-Next
+On HDD space i place 20,00GB  
+Next  
 
 ---
 
-Making VM Start at UEFI Mode
-Before start press right mouse button on the VM you just created and choose Settings... from the menu that pop up, or select the machine with left mouse button and at the top of the VBox Manager choose Orange gear Settings
+######Making VM Start at UEFI Mode 
+Before startint virtual machine press right mouse button on the VM you just created and choose ######Settings... from the menu that pop up, or select the machine with left mouse button and at the top of the VBox Manager choose Orange gear Settings  
 
-At the left side choose System
+At the left side choose System 
 
-On the Motherboard tab check the Enable EFI (special OSes only)
-OK
+On the ######Motherboard tab check the Enable EFI (special OSes only)  
+OK  
 
-Start
-Choose virtual optical disc file
-Choose your downloaded iso
-Start
+Start  
+
+Choose virtual optical disc file  
+Choose your downloaded iso  
+Start  
 
 ---  
 Choose Arch Linux archiso x86_64 UEFI USB
 
-Wait
+Wait  
 
-Check are you installing on UEFI mode  
+Check are you installing in UEFI mode  
 `ls /sys/firmware/efi/efivars`  
-If you do not see any output or your folder is empty, something is wrong.
+*If you do not see any output or your folder is empty, something is wrong.*  
 
 Check if you have internet  
 `ping archlinux.org`  
 
-Check time and date
+Check time and date  
 `date`  
 `timedatectl status`  
 
@@ -75,28 +76,25 @@ If tame and date are right continue
 If they are not:  
 `timedatectl show`  
 
-( mine are not. I found that timezone is different )
+*( mine are not. I found that timezone is different )  
 I opened https://jlk.fjfi.cvut.cz/arch/manpages/man/timedatectl.1  
 Found command to change timezone  
-`timedatectl set-timezone Europe/[Your Capital city]`
+`timedatectl set-timezone [Region]/[Your Capital city]`*
 
-`date` -To see did you change the reagion
+`date` -To see did you change the region
 
-
-Lets see what we have
+Lets see our HDD information  
 `lsblk`  
 `fdisk -l`  
 
 
-To start creating partitions we will use frisk tool. They are many toolsa llredy preunstalled
-Note: If you are thinking to do this on your main machine not in virtual one read more about what /dev/sda, /dev/sdb, /dev/sdc .., .. means
-
+To start creating partitions we will use frisk tool.  
+*They are many tools that can do the same job allredy preunstalled
+Note: If you are thinking to do this on your main machine, not on your virtual one read more about what /dev/sda, /dev/sdb, /dev/sdc .., .. means*  
 `fridk /dev/sda`  
 
-Tool started
-press m, than hit enter/return     - Help
-
-
+###### Tool started    
+*press m, than hit enter/return     - Help*  
 
 ###### Making boot drive:
 * n
@@ -107,7 +105,7 @@ press m, than hit enter/return     - Help
 * t - changing type of partition
 * 1-st partition that we just make
 * l to see codes
-* ef EFI (FAT-12/16/  - NOTE: may be you will not see but there is 32 also. At the end it will look like EFI (FAT-12/16/32)
+* ef EFI (FAT-12/16/  - *NOTE: may be you will not see but there is 32 also. At the end it will look like EFI (FAT-12/16/32)*
 * a
 * select boot drive that we just make
 
@@ -151,16 +149,16 @@ you can check with `lsblk` and `fdisk -l` to be complettely shure
 
 
 ###### Creatinf file systems/Formating partitions  
-boot drive:
+**boot drive:**
 * mkfs.fat -F32 /dev/sda1
 
 
-swap partition:  
+**swap partition:**  
 * mkswap /dev/sdX2  
 * swapon /dev/sdX2  
 
 
-root partition:  
+**root partition:**  
 * mkfs.ext4 /dev/sda3
 
 ---
@@ -197,7 +195,7 @@ wait...
 ###### Setting up linux enviroment  
 `genfstab -U /mnt >> /mnt/etc/fstab` - generating file with mounting points  
 
-*Check:
+*Check:  
 `genfstab -U /mnt`  
 `cat /mnt/etc/fstab`  
 
@@ -209,21 +207,21 @@ wait...
 
 `hwclock --systohc`  
 
-* Localization
+* Localization  
 `vi /etc/locale.gen` - Uncoment en_US.UTF-8 UTF-8  
 `locale-gen`  
 `echo "LANG=en_US.UTF-8" > /etc/locale.conf`  
 
 * Network configuration  
-`vim /etc/hostname` - Creating hostname ( Name of your computer )
+`vim /etc/hostname` - Creating hostname ( Name of your computer ).  
 It will be empty file. Write some name and than `:wq`  
 
 
 * Setuping host file  
 `vim /etc/hosts`  
-`127.0.0.1	localhost  
-::1		    localhost  
-127.0.0.1	Archlinux.localdomain	Archlinux `  
+`127.0.0.1	localhost`  
+`::1		    localhost`  
+`127.0.0.1	*hostname*.localdomain	*hostname`  
 
 * Network Manager  
 `pacman -S networkmanager`  
@@ -233,7 +231,7 @@ It will be empty file. Write some name and than `:wq`
 <details><summary>* Or dhcpcd enable</summary>
 <p>  
   
-`systemctl enable dhcpcd@eth0.service` 
+`systemctl enable dhcpcd@eth0.service`  
 `systemctl start dhcpcd@eth0.service`  
 The `eth0` is the network interface. If you are using different get tha name of it and change it.  
 
@@ -263,18 +261,23 @@ We need to do this if we install on virtual box as we are doing right now.
 `mkdir /boot/EFI/boot`  
 `cp /boot/EFI/arch/grubx64.efi /boot/EFI/boot/bootx64.efi`  
 
----
-
+</br>
 `exit`  
-`umount -a` - if it work at all. For me it always says that drives are busy
+`umount -a` - if it work at all. For me it always says that drives are busy  
 `reboot`  
 
+
+---
+
+
 login with:  
-`root`
+`root`  
 `your password`
 
 if you manage to boot and login you are almost done.  
 Now `shutdown -r 0`  
+
+---
 
 There is a chance your bootable iso to start again. If this happen:  
 * Select VM from VBox Manager
