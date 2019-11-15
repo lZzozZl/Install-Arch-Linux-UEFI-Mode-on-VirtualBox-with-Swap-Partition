@@ -40,12 +40,12 @@ Next
 
 ---
 
-######Making VM Start at UEFI Mode 
-Before startint virtual machine press right mouse button on the VM you just created and choose ######Settings... from the menu that pop up, or select the machine with left mouse button and at the top of the VBox Manager choose Orange gear Settings  
+###### Making VM Start at UEFI Mode 
+Before startint virtual machine press right mouse button on the VM you just created and choose ###### Settings... from the menu that pop up, or select the machine with left mouse button and at the top of the VBox Manager choose Orange gear Settings  
 
 At the left side choose System 
 
-On the ######Motherboard tab check the Enable EFI (special OSes only)  
+On the ###### Motherboard tab check the Enable EFI (special OSes only)  
 OK  
 
 Start  
